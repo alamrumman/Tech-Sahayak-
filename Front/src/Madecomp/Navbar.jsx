@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Langtoggle from "./Langtoggle";
 
 function Navbar() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -88,9 +89,9 @@ function Navbar() {
         <div className="bg-zinc-100 hover:bg-zinc-200 transition-colors duration-200 rounded-2xl px-4 py-2">
           <a
             href="#"
-            className="text-xl font-semibold text-zinc-800 hover:text-green-600 transition-colors duration-200 font-inter"
+            className=" font-semibold text-black hover:text-green-600 transition-colors duration-200 font-inter"
           >
-            Contact Us
+            <Langtoggle />
           </a>
         </div>
       </div>
