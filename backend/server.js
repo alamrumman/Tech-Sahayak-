@@ -20,17 +20,63 @@ app.use(cors());
 // Enable the express.json middleware to parse incoming JSON payloads
 app.use(express.json());
 
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    // Specify the directory where files will be stored
+    cb(null, "uploads"); // Ensure this directory exists
+  },
+  filename: function (req, file, cb) {
+    // Define how files should be named (e.g., unique timestamp + original extension)
+    cb(
+      null,
+      file.fieldname + "-" + Date.now() + path.extname(file.originalname)
+    );
+  },
+});
+const upload = multer({ storage: storage });
+
 // --- Basic Routes ---
 // A simple test route to check if the server is alive
 app.get("/", (req, res) => {
   res.status(200).json({ message: "Hello from the Crop Yield API! 🚀" });
 });
+app.post("/upload-single", upload.single("shcImage"), (req, res) => {
+  if (!req.file) {
+    return res.status(400).send("No file uploaded.");
+  }
+  res.send("File uploaded successfully: " + req.file.filename);
+});
+app.post("/api/ocr", upload.single("shcImage"), async (req, res) => {
+  // 1. Check if a file was uploaded by Multer
+  if (!req.file) {
+    return res.status(400).json({ error: "No file was uploaded." });
+  }
 
-// We will add our main API routes here later
-// const authRoutes = require('./routes/auth');
-// const dataRoutes = require('./routes/data');
-// app.use('/api/auth', authRoutes);
-// app.use('/api/data', dataRoutes);
+  const imagePath = req.file.path;
+  console.log(`Processing file: ${imagePath}`);
+
+  try {
+    // 2. Use Tesseract to recognize text from the image path
+    const {
+      data: { text },
+    } = await Tesseract.recognize(
+      imagePath,
+      "eng", // Language (e.g., 'eng' for English)
+      { logger: (m) => console.log(m) } // Optional: logs progress
+    );
+
+    // 3. Send the extracted text back to the frontend
+    console.log("OCR successful.");
+    res.json({ text: text });
+  } catch (error) {
+    console.error("Error during OCR processing:", error);
+    res.status(500).json({ error: "Failed to process image." });
+  } finally {
+    // 4. IMPORTANT: Delete the temporary file from the server
+    fs.unlinkSync(imagePath);
+    console.log(`Deleted temporary file: ${imagePath}`);
+  }
+});
 
 // --- Server Initialization ---
 // Get the port from environment variables, with a default of 5000
