@@ -21,14 +21,16 @@ function Cardcomp() {
           <label className="tracking-tighter text-sm">
             Get to know your yeild today and take steps to enhance it
           </label>
-          <button className="btn btn-outline btn-success mt-2 w-30">
-            Check now!
-          </button>
+          <a href="/login">
+            <button className="btn btn-outline btn-success mt-2 w-30">
+              Check now!
+            </button>
+          </a>
         </div>
       </div>
-      <div class="absolute top-[0.1px] right-[5px]">
-        <button class="rounded-4xl bg-green-500 w-13 h-13 flex items-center justify-center">
-          <ImArrowUpRight2 />
+      <div class="absolute top-[0.1px]  hover:scale-120 transition duration-350 right-[8px]">
+        <button class="rounded-4xl bg-green-400 hover:bg-green-500 w-13 h-13 flex items-center justify-center cursor-pointer">
+          <ImArrowUpRight2 className="transform " />
         </button>
       </div>
     </div>

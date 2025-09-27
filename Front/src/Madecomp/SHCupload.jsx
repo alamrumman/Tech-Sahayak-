@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import axios from "axios";
-import { IoCloudUploadOutline } from "react-icons/io5";
+import { BsUpload } from "react-icons/bs";
 
 function SHCupload() {
   const [selectedFile, setSelectedFile] = useState(null);
@@ -70,17 +70,19 @@ function SHCupload() {
               Upload your SHC for soil health and yield recommendations.
             </label>
 
-            <div className="mt-4 flex">
+            <div className="mt-3 flex">
               {/* --- Conditional Rendering Logic Starts Here --- */}
               {!selectedFile ? (
                 // STATE 1: No file selected, show the file input
                 <>
                   <label
                     htmlFor="file-upload"
-                    className=" cursor-pointer bg-green-600 text-white font py-2 px-4 rounded hover:bg-green-700"
+                    className=" flex gap-2 justify-center cursor-pointer bg-green-600 text-white font py-2 px-4 rounded hover:bg-green-700"
                   >
                     Choose File
+                    <BsUpload className="w-5 h-5" />
                   </label>
+
                   <input
                     id="file-upload"
                     type="file" // CORRECTED: type is "file"
@@ -91,12 +93,12 @@ function SHCupload() {
                 </>
               ) : (
                 // STATE 2: File is selected, show file name and Upload/Cancel buttons
-                <div className="flex items-center gap-4">
+                <div className="flex items-center gap-2">
                   <p className="font-mono text-sm">{selectedFile.name}</p>
                   <button
                     onClick={handleUpload}
                     disabled={isLoading}
-                    className="bg-blue-600 text-white font-bold py-2 px-4 rounded hover:bg-blue-700 disabled:bg-gray-400"
+                    className="bg-yellow-500 cursor-pointer text-white font-semibold py-2 px-4 rounded hover:bg-yellow-400 disabled:bg-gray-400"
                   >
                     {isLoading ? "Uploading..." : "Upload"}
                   </button>
@@ -112,7 +114,6 @@ function SHCupload() {
 
               {message && <p className="mt-2 text-sm">{message}</p>}
             </div>
-            
           </div>
         </div>
       </div>
