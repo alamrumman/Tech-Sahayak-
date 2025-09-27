@@ -1,17 +1,21 @@
 // Import necessary packages
 const express = require("express");
+const app = express();
 const dotenv = require("dotenv");
 const cors = require("cors");
 const Tesseract = require("tesseract.js");
 const path = require("path");
 const fs = require("fs");
 const multer = require("multer");
-
 // Load environment variables from .env file
 dotenv.config();
+const mongoose = require("mongoose");
+mongoose
+  .connect(process.env.MONGO_URI)
+  .then(() => console.log("MongoDB Connected..."))
+  .catch((err) => console.error(err));
 
 // Initialize the Express app
-const app = express();
 
 // --- Middleware ---
 // Enable Cross-Origin Resource Sharing (CORS) to allow requests from the React frontend
@@ -19,6 +23,9 @@ app.use(cors());
 
 // Enable the express.json middleware to parse incoming JSON payloads
 app.use(express.json());
+const user = require("./models/User");
+
+app.post("/newUser", async (req, res) => {});
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
