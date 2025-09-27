@@ -35,7 +35,7 @@ function Hero() {
           {/* We add a space and specific styling to make it look like one sentence */}
         </div>
 
-        <div className=" md:flex justify-center-safe  gap-20 text-black">
+        <div className="  md:flex justify-center-safe  gap-20 text-black">
           <div className="mt-20 flex justify-end ">
             <Cardcomp />
           </div>

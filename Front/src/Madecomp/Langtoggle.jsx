@@ -25,7 +25,7 @@ const LanguageToggle = () => {
           checked={isOdia}
           onChange={handleLanguageChange}
         />
-        <span className="label-text">Odia</span>
+        <span className="label-text">ଓଡ଼ିଆ</span>
       </label>
     </div>
   );

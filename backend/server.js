@@ -25,7 +25,7 @@ app.use(cors());
 app.use(express.json());
 const user = require("./models/User");
 
-app.post("/newUser", async (req, res) => {});
+
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
