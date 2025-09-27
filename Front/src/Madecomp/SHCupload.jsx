@@ -25,11 +25,10 @@ function SHCupload() {
     setIsLoading(true);
     const formData = new FormData();
     formData.append("shcImage", selectedFile);
+
+    const apiUrl = `${import.meta.env.VITE_API_BASE_URL}/api/ocr`;
     try {
-      const response = await axios.post(
-        "http://localhost:5000/api/ocr",
-        formData
-      );
+      const response = await axios.post(apiUrl, formData);
 
       console.log("Server response:", response.data);
       const textFromServer = response.data.text;
