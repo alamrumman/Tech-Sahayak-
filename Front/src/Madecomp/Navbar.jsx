@@ -10,7 +10,7 @@ function Navbar() {
       <div className="flex items-center">
         <div className="bg-zinc-100 hover:bg-zinc-200 transition-colors duration-200 rounded-2xl px-4 py-2">
           <a
-            href="#"
+            href="/"
             className="text-xl font-bold text-zinc-800 hover:text-green-600 transition-colors duration-200 font-inter"
           >
             AgroAi
@@ -24,7 +24,7 @@ function Navbar() {
           <ul className="flex items-center space-x-8">
             <li>
               <a
-                href="#"
+                href="/"
                 className="text-zinc-700 hover:text-green-600 font-medium transition-colors duration-200 py-2 px-3 rounded-lg hover:bg-zinc-200"
               >
                 Home

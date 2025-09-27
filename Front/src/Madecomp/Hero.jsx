@@ -28,7 +28,7 @@ function Hero() {
         }}
       >
         <Navbar />
-        <div className="h-20 mt-12 bg-transparent w-120 font-semibold tracking-tight text-white text-2xl md:text-5xl ">
+        <div className="h-20 mt-12 bg-transparent w-100 md:w-120 font-semibold tracking-tight text-white text-2xl md:text-5xl ">
           Yield prediction using
           <FlipWords words={changingWords} />
           {/* 4. Render FlipWords for the changing part right after it */}

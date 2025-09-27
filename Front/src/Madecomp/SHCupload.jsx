@@ -57,7 +57,7 @@ function SHCupload() {
   return (
     <div className="bg-zinc-100 h-50 w-100 mt-20 rounded-3xl p-3">
       <div className="flex">
-        <img className="h-42 w-42 rounded-2xl" src="images\sv.jpg" alt="" />
+        <img className="h-42 w-44 rounded-2xl" src="images\sv.jpg" alt="" />
         <div className="p-2 flex-col">
           <label
             className="mt-10 text-green-700 font-semibold text-xl"

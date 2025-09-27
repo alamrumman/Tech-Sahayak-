@@ -21,7 +21,7 @@ function Cardcomp() {
           <label className="tracking-tighter text-sm">
             Get to know your yeild today and take steps to enhance it
           </label>
-          <a href="/login">
+          <a href="/yeildpredict">
             <button className="btn btn-outline btn-success mt-2 w-30">
               Check now!
             </button>
