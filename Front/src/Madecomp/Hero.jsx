@@ -22,9 +22,9 @@ function Hero() {
   ];
 
   return (
-    <section className="w-full min-h-screen bg-zinc-50 p-2 sm:p-3">
+    <section className="w-full h-screen bg-zinc-50 p-2 sm:p-3">
       <div
-        className="p-3 sm:p-5 rounded-2xl sm:rounded-4xl bg-cover bg-center bg-no-repeat w-full min-h-screen"
+        className="p-5 sm:p-5 rounded-2xl sm:rounded-4xl bg-cover bg-center bg-no-repeat w-full h-full"
         style={{
           backgroundImage: `url('/images/fields-bali-are-photographed-from-drone.jpg')`,
         }}
