@@ -22,7 +22,7 @@ function Cardcomp() {
             Get to know your yeild today and take steps to enhance it
           </label>
           <a href="/yeildpredict">
-            <button className="btn btn-outline btn-success mt-2 w-30">
+            <button className="btn btn-outline btn-success bg-green-600 text-white mt-2 w-30">
               Check now!
             </button>
           </a>
