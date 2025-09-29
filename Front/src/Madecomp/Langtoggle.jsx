@@ -16,7 +16,7 @@ const LanguageToggle = () => {
 
   return (
     // Daisy UI's recommended structure for a toggle with labels
-    <div className="form-control">
+    <div className="form-control text-black">
       <label className="label cursor-pointer gap-2">
         <span className="label-text">English</span>
         <input

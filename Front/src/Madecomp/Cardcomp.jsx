@@ -1,7 +1,11 @@
 import React from "react";
 import "./Cardcomp.css";
 import { ImArrowUpRight2 } from "react-icons/im";
+import { useTranslation } from "react-i18next";
+
 function Cardcomp() {
+  const { t } = useTranslation();
+
   return (
     <div class="relative w-[400px] h-[200px] ">
       <div class="inverted-radius w-full h-full bg-whitesmoke"></div>
@@ -16,14 +20,14 @@ function Cardcomp() {
             className="mt-10  text-green-700 font-semibold text-xl "
             htmlFor=""
           >
-            Yeild predictor
+            {t("card.yield_predictor")}
           </label>
           <label className="tracking-tighter text-sm">
-            Get to know your yeild today and take steps to enhance it
+            {t("card.yield_description")}
           </label>
           <a href="/yeildpredict">
             <button className="btn btn-outline btn-success bg-green-600 text-white mt-2 w-30">
-              Check now!
+              {t("card.check_now")}
             </button>
           </a>
         </div>
