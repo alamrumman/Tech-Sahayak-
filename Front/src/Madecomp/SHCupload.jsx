@@ -89,13 +89,14 @@ function SHCupload() {
               ) : (
                 <div className="flex items-center gap-2">
                   <p className="font-mono text-sm">{selectedFile.name}</p>
-                  <button
-                    onClick={handleUpload}
-                    disabled={isLoading}
-                    className="bg-yellow-500 cursor-pointer text-white font-semibold py-2 px-4 rounded hover:bg-yellow-400 disabled:bg-gray-400"
-                  >
-                    {isLoading ? t("shc.uploading") : t("shc.upload")}
-                  </button>
+                  <a href="/Shcsection">
+                    <button
+                      disabled={isLoading}
+                      className="bg-yellow-500 cursor-pointer text-white font-semibold py-2 px-4 rounded hover:bg-yellow-400 disabled:bg-gray-400"
+                    >
+                      {isLoading ? t("shc.uploading") : t("shc.upload")}
+                    </button>
+                  </a>
                   <button
                     onClick={handleCancel}
                     className="text-red-500 hover:text-red-700"
