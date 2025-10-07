@@ -1,16 +1,16 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
+
 function Test() {
   const [backendMessage, setBackendMessage] = useState("");
   const [isLoading, setIsLoading] = useState(true);
 
-  // 2. Use useEffect to run code once when the component loads
   useEffect(() => {
-    // 3. Define the backend URL
-    const API_URL = "https://agroai-backend-jkws.onrender.com/"; // Your backend server address
+    // The backend URL is now read from an environment variable
+    const API_URL = process.env.REACT_APP_API_URL;
 
-    // 4. Use axios to make a GET request
+    // Use axios to make a GET request
     axios
       .get(API_URL)
       .then((response) => {
@@ -28,7 +28,7 @@ function Test() {
       });
   }, []); // The empty array [] means this effect runs only once
 
-  // 5. Render the data (or a loading message)
+  // Render the data (or a loading message)
   return (
     <div>
       <h2>Dashboard</h2>
