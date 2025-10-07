@@ -7,28 +7,27 @@ function Test() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // The backend URL is now read from an environment variable
-    const API_URL = process.env.REACT_APP_BACKEND_URL;
+    // Correctly read the Vite environment variable
+    const API_URL = import.meta.env.VITE_BACKEND_URL;
 
-    // Use axios to make a GET request
     axios
       .get(API_URL)
       .then((response) => {
-        // If the request is successful, update the state with the message
+        // Log the data to see its structure
+        console.log("Response from server:", response.data);
+
+        // Set the state based on the actual data structure
         setBackendMessage(response.data.message);
       })
       .catch((error) => {
-        // If there's an error, log it to the console
         console.error("There was an error fetching data!", error);
         setBackendMessage("Could not connect to the backend.");
       })
       .finally(() => {
-        // This runs whether it was successful or not
         setIsLoading(false);
       });
-  }, []); // The empty array [] means this effect runs only once
+  }, []);
 
-  // Render the data (or a loading message)
   return (
     <div>
       <h2>Dashboard</h2>
