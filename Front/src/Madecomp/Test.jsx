@@ -8,7 +8,7 @@ function Test() {
 
   useEffect(() => {
     // The backend URL is now read from an environment variable
-    const API_URL = process.env.REACT_APP_API_URL;
+    const API_URL = process.env.REACT_APP_BACKEND_URL;
 
     // Use axios to make a GET request
     axios
