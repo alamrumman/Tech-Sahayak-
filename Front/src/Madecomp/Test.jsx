@@ -8,7 +8,7 @@ function Test() {
   // 2. Use useEffect to run code once when the component loads
   useEffect(() => {
     // 3. Define the backend URL
-    const API_URL = "http://localhost:5000/"; // Your backend server address
+    const API_URL = "https://agroai-backend-jkws.onrender.com/"; // Your backend server address
 
     // 4. Use axios to make a GET request
     axios

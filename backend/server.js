@@ -19,13 +19,15 @@ mongoose
 
 // --- Middleware ---
 // Enable Cross-Origin Resource Sharing (CORS) to allow requests from the React frontend
-app.use(cors());
+app.use(
+  cors({
+    origin: process.env.FRONTEND_URL,
+  })
+);
 
 // Enable the express.json middleware to parse incoming JSON payloads
 app.use(express.json());
 const user = require("./models/User");
-
-
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
