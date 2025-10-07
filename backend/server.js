@@ -15,10 +15,7 @@ mongoose
   .then(() => console.log("MongoDB Connected..."))
   .catch((err) => console.error(err));
 
-// Initialize the Express app
 
-// --- Middleware ---
-// Enable Cross-Origin Resource Sharing (CORS) to allow requests from the React frontend
 app.use(
   cors({
     origin: process.env.FRONTEND_URL,
