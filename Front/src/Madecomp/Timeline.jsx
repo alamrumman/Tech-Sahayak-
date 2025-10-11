@@ -34,7 +34,7 @@ const timelineEventsData = [
     ],
   },
   {
-    date: "October 30, 2025",
+    date: "October 18, 2025",
     title: "Phase II",
     status: "current",
     description: [
@@ -50,7 +50,7 @@ const timelineEventsData = [
     ],
   },
   {
-    date: "November 15, 2025",
+    date: "November 1, 2025",
     title: "Phase III",
     status: "upcoming",
     description: [
@@ -71,7 +71,7 @@ const timelineEventsData = [
     status: "upcoming",
     description: [
       {
-        text: "Working on docker and Devops segment for load balancing",
+        text: "Working on docker and Devops segment for load balancing and scalability ",
         isDone: false,
       },
       {
