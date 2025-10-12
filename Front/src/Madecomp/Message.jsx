@@ -8,7 +8,7 @@ function Message() {
   const [isModelOpen, setIsModelOpen] = useState(false);
 
   return (
-    <div className="bg-zinc-100 w-130 resize-x flex-wrap h-30 z-10 rounded-3xl text-black p-5">
+    <div className="bg-zinc-100 w-80 md:w-130 resize-x flex-wrap h-30 z-10 rounded-3xl text-black p-4">
       <div className="flex  justify-center">
         <div className="py-3">
           <Avatar>
@@ -16,7 +16,7 @@ function Message() {
           </Avatar>
         </div>
         <textarea
-          className="text-black  w-full border-none outline-none p-3"
+          className="text-black w-full border-none outline-none p-3"
           name=""
           id=""
           placeholder="Write update..."

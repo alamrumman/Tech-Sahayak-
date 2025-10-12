@@ -2,12 +2,13 @@ import React from "react";
 import { useState } from "react";
 import Message from "./Message";
 import Cardin from "./Cardin";
+
 import { Button } from "../components/ui/button";
 
 function Forum() {
   const [isModelOpen, setIsModelOpen] = useState(false);
   return (
-    <section className="bg-white py-12">
+    <section className="bg-white py-12 px-2">
       <div className="flex items-center justify-center">
         <div className="container">
           <h1 className="mb-5 text-center text-3xl font-bold tracking-tighter text-black sm:text-6xl">

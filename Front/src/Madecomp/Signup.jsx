@@ -11,23 +11,17 @@ import {
 import { Input } from "../components/ui/input";
 import { Label } from "../components/ui/label";
 
-function Cardin(onclose) {
+function Signup() {
   return (
     <section className=" fixed inset-0 bg-white bg-opacity-100 text-black flex items-center justify-center p-5 z-50">
       <Card className="w-full max-w-sm">
         <CardHeader>
-          <CardTitle>Login to your account</CardTitle>
+          <CardTitle>Create account</CardTitle>
           <CardDescription>
-            Enter your email below to login to your account
+            Enter your details below to create your account
           </CardDescription>
           <CardAction>
-            <a href="/signup">
-              <Button className={"text-black"} variant="link">
-                Sign Up
-              </Button>
-            </a>
             <Button
-              onClick={onclose}
               className={"text-black hover:cursor-pointer"}
               variant="link"
             >
@@ -48,6 +42,10 @@ function Cardin(onclose) {
                 />
               </div>
               <div className="grid gap-2">
+                <Label htmlFor="email">Name</Label>
+                <Input id="name" type="" required />
+              </div>
+              <div className="grid gap-2">
                 <div className="flex items-center">
                   <Label htmlFor="password">Password</Label>
                   <a
@@ -59,6 +57,12 @@ function Cardin(onclose) {
                 </div>
                 <Input id="password" type="password" required />
               </div>
+              <div className="grid gap-2">
+                <div className="flex items-center">
+                  <Label htmlFor="password">Password</Label>
+                </div>
+                <Input id="password" type="password" required />
+              </div>
             </div>
           </form>
         </CardContent>
@@ -67,10 +71,10 @@ function Cardin(onclose) {
             type="submit"
             className="w-full bg-black text-white hover:bg-zinc-800 cursor-pointer"
           >
-            Login
+            Create account
           </Button>
           <Button variant="outline" className="w-full">
-            Login with Google
+            Signup with Google
           </Button>
         </CardFooter>
       </Card>
@@ -78,4 +82,4 @@ function Cardin(onclose) {
   );
 }
 
-export default Cardin;
+export default Signup;
