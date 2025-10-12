@@ -11,9 +11,9 @@ import {
 import { Input } from "../components/ui/input";
 import { Label } from "../components/ui/label";
 
-function Cardin() {
+function Cardin(onclose) {
   return (
-    <section className="bg-white text-black flex items-center justify-center p-5">
+    <section className=" fixed inset-0 bg-white bg-opacity-100 text-black flex items-center justify-center p-5 z-50">
       <Card className="w-full max-w-sm">
         <CardHeader>
           <CardTitle>Login to your account</CardTitle>
@@ -21,7 +21,15 @@ function Cardin() {
             Enter your email below to login to your account
           </CardDescription>
           <CardAction>
-            <Button className={"text-black"} variant="link">Sign Up</Button>
+            <Button className={"text-black"} variant="link">
+              Sign Up
+            </Button>{" "}
+            <Button
+              onClick={onclose}
+              className={"text-black hover:cursor-pointer"}
+              variant="link"
+            >Close
+            </Button>
           </CardAction>
         </CardHeader>
         <CardContent>
@@ -52,7 +60,10 @@ function Cardin() {
           </form>
         </CardContent>
         <CardFooter className="flex-col gap-2">
-          <Button type="submit" className="w-full bg-black text-white hover:bg-zinc-800 cursor-pointer">
+          <Button
+            type="submit"
+            className="w-full bg-black text-white hover:bg-zinc-800 cursor-pointer"
+          >
             Login
           </Button>
           <Button variant="outline" className="w-full">
