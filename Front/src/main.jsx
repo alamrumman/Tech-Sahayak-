@@ -7,9 +7,9 @@ import App from "./App.jsx";
 import Shchero from "./Madecomp/Shchero.jsx";
 import Recommender from "./Madecomp/Recommender.jsx";
 import i18n from "./i18n.js";
-
 import Hero from "./Madecomp/Hero.jsx";
 import Yieldp from "./Madecomp/Yieldp.jsx";
+import Cardin from "./Madecomp/Cardin.jsx"
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
@@ -21,6 +21,7 @@ createRoot(document.getElementById("root")).render(
         <Route path="/Shcsection" element={<Shchero />} />
         <Route path="/Shcsection" element={<Shchero />} />
         <Route path="/Shcrecommendation" element={<Recommender />} />
+        <Route path="/login" element={<Cardin/>} />
       </Routes>
     </BrowserRouter>
   </StrictMode>
