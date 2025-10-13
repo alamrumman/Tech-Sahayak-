@@ -7,8 +7,8 @@ const Tesseract = require("tesseract.js");
 const path = require("path");
 const fs = require("fs");
 const multer = require("multer");
-// Load environment variables from .env file
 dotenv.config();
+
 const mongoose = require("mongoose");
 mongoose
   .connect(process.env.MONGO_URI)
@@ -20,7 +20,7 @@ app.use(
     origin: [process.env.FRONTEND_URL, "http://localhost:5173"],
   })
 );
-
+const authRoutes = require("./routes/auth");
 // Enable the express.json middleware to parse incoming JSON payloads
 app.use(express.json());
 const user = require("./models/User");
@@ -83,8 +83,8 @@ app.post("/api/ocr", upload.single("shcImage"), async (req, res) => {
   }
 });
 
-// --- Server Initialization ---
-// Get the port from environment variables, with a default of 5000
+app.use("/api/auth", authRoutes);
+
 const PORT = process.env.PORT || 5000;
 
 // Start the server and listen for incoming requests

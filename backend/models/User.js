@@ -19,7 +19,8 @@ const userSchema = new mongoose.Schema({
   Role: {
     type: String,
     required: true,
-    
+    enum: ["Team lead", "ML expert", "Data analyst", "Web developer"],
+    default: ["Data analyst"],
   },
 });
 
