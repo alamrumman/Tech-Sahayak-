@@ -6,7 +6,7 @@ function Navbar() {
   const { t } = useTranslation();
 
   return (
-    <section className="flex w-full items-center justify-between px-6 shadow-sm">
+    <section className="flex w-full items-center justify-between px-1 shadow-sm">
       {/* Logo Section */}
       <div className="flex items-center">
         <div className="bg-zinc-100 hover:bg-zinc-200 transition-colors duration-200 rounded-2xl px-4 py-2">
