@@ -9,29 +9,36 @@ const fs = require("fs");
 const multer = require("multer");
 dotenv.config();
 
+// Connect to MongoDB
 const mongoose = require("mongoose");
 mongoose
   .connect(process.env.MONGO_URI)
   .then(() => console.log("MongoDB Connected..."))
   .catch((err) => console.error(err));
 
+// Allow frontend to connect
 app.use(
   cors({
     origin: [process.env.FRONTEND_URL, "http://localhost:5173"],
   })
 );
-const authRoutes = require("./routes/auth");
-// Enable the express.json middleware to parse incoming JSON payloads
-app.use(express.json());
-const user = require("./models/User");
 
+// CHANGE 1: Parse JSON from requests (MUST BE BEFORE ROUTES!)
+app.use(express.json());
+
+// CHANGE 2: Import and use auth routes IMMEDIATELY after express.json()
+const authRoutes = require("./routes/auth");
+app.use("/api/auth", authRoutes);
+
+// CHANGE 3: Removed this line (it was unused)
+// const user = require("./models/User");
+
+// Setup file upload storage
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    // Specify the directory where files will be stored
-    cb(null, "uploads"); // Ensure this directory exists
+    cb(null, "uploads"); // Make sure "uploads" folder exists!
   },
   filename: function (req, file, cb) {
-    // Define how files should be named (e.g., unique timestamp + original extension)
     cb(
       null,
       file.fieldname + "-" + Date.now() + path.extname(file.originalname)
@@ -40,19 +47,22 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ storage: storage });
 
-// --- Basic Routes ---
-// A simple test route to check if the server is alive
+// --- Routes ---
+// Test route
 app.get("/", (req, res) => {
   res.status(200).json({ message: "Hello from the Crop Yield API! 🚀" });
 });
+
+// Upload test route
 app.post("/upload-single", upload.single("shcImage"), (req, res) => {
   if (!req.file) {
     return res.status(400).send("No file uploaded.");
   }
   res.send("File uploaded successfully: " + req.file.filename);
 });
+
+// OCR route (reads text from images)
 app.post("/api/ocr", upload.single("shcImage"), async (req, res) => {
-  // 1. Check if a file was uploaded by Multer
   if (!req.file) {
     return res.status(400).json({ error: "No file was uploaded." });
   }
@@ -61,33 +71,25 @@ app.post("/api/ocr", upload.single("shcImage"), async (req, res) => {
   console.log(`Processing file: ${imagePath}`);
 
   try {
-    // 2. Use Tesseract to recognize text from the image path
     const {
       data: { text },
-    } = await Tesseract.recognize(
-      imagePath,
-      "eng", // Language (e.g., 'eng' for English)
-      { logger: (m) => console.log(m) } // Optional: logs progress
-    );
+    } = await Tesseract.recognize(imagePath, "eng", {
+      logger: (m) => console.log(m),
+    });
 
-    // 3. Send the extracted text back to the frontend
     console.log("OCR successful.");
     res.json({ text: text });
   } catch (error) {
     console.error("Error during OCR processing:", error);
     res.status(500).json({ error: "Failed to process image." });
   } finally {
-    // 4. IMPORTANT: Delete the temporary file from the server
     fs.unlinkSync(imagePath);
     console.log(`Deleted temporary file: ${imagePath}`);
   }
 });
 
-app.use("/api/auth", authRoutes);
-
+// Start the server
 const PORT = process.env.PORT || 5000;
-
-// Start the server and listen for incoming requests
 app.listen(PORT, () => {
-  console.log(`✅ Server listening at ${PORT}`);
+  console.log(`✅ Server listening at http://localhost:${PORT}`);
 });
