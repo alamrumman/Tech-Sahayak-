@@ -18,7 +18,7 @@ function Hero() {
   ];
 
   return (
-    <section className="w-full h-screen bg-zinc-50 p-2 sm:p-3 ">
+    <section className="w-full h-screen bg-zinc-50 p-2 sm:p-3 overflow-hidden ">
       <div
         className="p-5 sm:p-5 rounded-2xl sm:rounded-4xl bg-cover bg-center bg-no-repeat w-full h-full"
         style={{
@@ -26,7 +26,7 @@ function Hero() {
         }}
       >
         <Navbar />
-        <div className=" min-h-[80px] mt-8 sm:mt-12 bg-transparent max-w-full sm:max-w-md md:max-w-lg lg:max-w-2xl font-semibold tracking-tight text-white text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl leading-tight">
+        <div className="overflow-hidden min-h-[80px] mt-8 sm:mt-12 bg-transparent max-w-full sm:max-w-md md:max-w-lg lg:max-w-2xl font-semibold tracking-tight text-white text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl leading-tight">
           {t("hero.yield_prediction_using")}
           <FlipWords words={changingWords} />
         </div>
