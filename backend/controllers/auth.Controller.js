@@ -6,7 +6,7 @@ const signup = async (req, res) => {
   //now when we are signing up we will first check if the user already exist or not
   try {
     //lets first refactor this
-    const { name, email, password, Role } = req.body;
+    const { name, email, pass, Role } = req.body;
     //check if existing
     const existingUser = await User.findOne({ email: email });
 
