@@ -12,7 +12,7 @@ const userSchema = new mongoose.Schema({
     unique: true, // No two users can have the same email
     lowercase: true,
   },
-  password: {
+  pass: {
     type: String,
     required: true,
   },
@@ -20,19 +20,19 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
     enum: ["Team lead", "ML expert", "Data analyst", "Web developer"],
-    default: ["Data analyst"],
+    default: "Data analyst",
   },
 });
 
 //middleware for hashing the password before the user is created.
 userSchema.pre("save", async function (next) {
   // Only hash the password if it has been modified (or is new)
-  if (!this.isModified("password")) {
+  if (!this.isModified("pass")) {
     return next();
   }
   // Hash the password with a cost factor of 12
   const salt = await bcrypt.genSalt(12);
-  this.password = await bcrypt.hash(this.password, salt);
+  this.pass = await bcrypt.hash(this.pass, salt);
   next();
 });
 

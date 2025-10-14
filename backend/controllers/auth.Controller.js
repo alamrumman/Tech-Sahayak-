@@ -41,7 +41,7 @@ const signup = async (req, res) => {
 const login = async (req, res) => {
   // we will refactor, check if the user exist , compare password and add cookies if all true
   try {
-    const { email, password } = req.body;
+    const { email, pass } = req.body;
 
     const existingUser = await User.findOne({ email: email });
 
@@ -50,8 +50,8 @@ const login = async (req, res) => {
       return res.status(401).json({ message: "Invalid credential" });
     } else {
       const isPasswordcorrect = await bcrypt.compare(
-        password,
-        existingUser.password
+        pass,
+        existingUser.pass
       );
 
       if (isPasswordcorrect) {
