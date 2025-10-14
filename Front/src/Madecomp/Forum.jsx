@@ -16,12 +16,7 @@ function Forum() {
           </h1>
           <div className="flex w-full justify-center flex-col gap-6 rounded-xl py-3 md:py-16 relative">
             <div className="px-5 bg-zinc-50 h-100 rounded-2xl border-solid border-1 border-black flex items-end justify-center ">
-              {isModelOpen &&
-                Cardin(
-                  (onclose = () => {
-                    setIsModelOpen(false);
-                  })
-                )}
+              {isModelOpen && <Cardin onclose={() => setIsModelOpen(false)} />}
               <div className="mb-5">
                 <Message />
                 <Button
