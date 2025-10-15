@@ -1,9 +1,11 @@
 const express = require("express");
 const router = express.Router();
-const posting = require("../controllers/post.Controller");
+const { posting, getAllPosts } = require("../controllers/post.Controller");
 
-// POST /api/post/posts
+// ✅ Create post
 router.post("/posts", posting);
+
+// ✅ Get all posts
 router.get("/posts", getAllPosts);
 
 module.exports = router;
