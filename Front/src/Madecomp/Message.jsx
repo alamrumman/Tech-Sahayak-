@@ -4,7 +4,7 @@ import { Avatar, AvatarImage } from "../components/ui/avatar";
 import Cardin from "./Cardin";
 import { href } from "react-router-dom";
 
-function Message() {
+function Message({ message, setMessage }) {
   const [isModelOpen, setIsModelOpen] = useState(false);
 
   return (
@@ -17,6 +17,7 @@ function Message() {
         </div>
         <textarea
           className="text-black w-full border-none outline-none p-3"
+          onChange={(e) => setMessage(e.target.value)}
           name=""
           id=""
           placeholder="Write update..."

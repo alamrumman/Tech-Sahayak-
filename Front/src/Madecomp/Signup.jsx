@@ -62,7 +62,7 @@ function Signup() {
         alert("Account created successfully!");
         // Here you would typically navigate the user away, e.g., to the homepage
         // navigate('/');
-        window.location.href("/");
+       
       } catch (err) {
         setError(err.message);
       } finally {

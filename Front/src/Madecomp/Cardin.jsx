@@ -17,18 +17,20 @@ function Cardin({ onclose }) {
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
   const [error, setError] = useState("");
-  const [isloading, setisLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const { login } = useAuth();
 
   const handlesubmit = async (e) => {
     e.preventDefault();
-    if (!email || !pass) {
-      alert("Email or password is empty");
+    setError("");
+
+    if (!email.trim() || !pass.trim()) {
+      setError("Email or password is empty");
       return;
     }
 
-    setisLoading(true);
+    setIsLoading(true);
     try {
       const response = await fetch(
         "https://agroai-backend-jkws.onrender.com/api/auth/login",
@@ -42,28 +44,46 @@ function Cardin({ onclose }) {
         }
       );
       const responseData = await response.json();
+      console.log("login response:", responseData);
 
       if (!response.ok) {
+        // server returned error status
         throw new Error(responseData.message || "Login failed.");
       }
 
-      // Store token
-      if (responseData.token) {
-        localStorage.setItem("token", responseData.token);
+      // Expecting responseData.token and responseData.user
+      const tokenFromServer = responseData.token;
+      const userFromServer = responseData.existingUser;
+
+      if (!userFromServer?.email) {
+        console.warn(
+          "User object does not include email. Forum POST will fail!"
+        );
+      }
+      if (!tokenFromServer) {
+        // still persist if token was stored elsewhere, but warn
+        console.warn("Login succeeded but no token returned from server.");
+      } else {
+        // persist token to localStorage (optional - login() will also set it)
+        localStorage.setItem("token", tokenFromServer);
       }
 
-      // Update auth context
-      login(responseData.user);
+      // IMPORTANT: pass both user and token to context login
+      login(userFromServer, tokenFromServer);
 
+      // close modal and reset fields
+      setEmail("");
+      setPass("");
       alert("Login successful!");
+      onclose();
     } catch (err) {
       console.error("Login error:", err);
       setError(err.message || "Invalid email or password");
     } finally {
-      // FIX 5: Reset loading state
-      setisLoading(false);
+      setIsLoading(false);
     }
   };
+
   return (
     <section className=" fixed inset-0 bg-white bg-opacity-100 text-black flex items-center justify-center p-5 z-50">
       <Card className="w-full max-w-sm">
@@ -87,13 +107,16 @@ function Cardin({ onclose }) {
             </Button>
           </CardAction>
         </CardHeader>
+
         <CardContent>
-          <form>
+          {/* Form uses onSubmit so Enter key works and semantics are correct */}
+          <form onSubmit={handlesubmit}>
             <div className="flex flex-col gap-6">
               <div className="grid gap-2">
                 <Label htmlFor="email">Email</Label>
                 <Input
                   id="email"
+                  value={email}
                   onChange={(e) => {
                     setEmail(e.target.value);
                   }}
@@ -121,31 +144,33 @@ function Cardin({ onclose }) {
                 />
               </div>
             </div>
+
+            {/* error display inside the form so focus/scroll works */}
+            {error && (
+              <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded mt-4">
+                <p className="text-sm">{error}</p>
+              </div>
+            )}
+
+            <CardFooter className="flex-col gap-2 mt-4">
+              <Button
+                type="submit"
+                className="w-full bg-black text-white hover:bg-zinc-800 cursor-pointer"
+                disabled={isLoading}
+              >
+                {isLoading ? "Logging in ...." : "Log in"}
+              </Button>
+
+              <Button
+                onClick={() => alert("Google login disabled for now ")}
+                variant="outline"
+                className="w-full"
+              >
+                Login with Google
+              </Button>
+            </CardFooter>
           </form>
         </CardContent>
-        {/* ERROR DISPLAYS HERE - Between form inputs and buttons */}
-        {error && (
-          <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded mt-4">
-            <p className="text-sm">{error}</p>
-          </div>
-        )}
-        <CardFooter className="flex-col gap-2">
-          <Button
-            onClick={handlesubmit}
-            type="submit"
-            className="w-full bg-black text-white hover:bg-zinc-800 cursor-pointer"
-            disabled={isloading}
-          >
-            {isloading ? "Logging in ...." : "Log in"}
-          </Button>
-          <Button
-            onClick={() => alert("Google login disabled for now ")}
-            variant="outline"
-            className="w-full"
-          >
-            Login with Google
-          </Button>
-        </CardFooter>
       </Card>
     </section>
   );
