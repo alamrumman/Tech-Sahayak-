@@ -29,6 +29,7 @@ app.use(express.json());
 // CHANGE 2: Import and use auth routes IMMEDIATELY after express.json()
 const authRoutes = require("./routes/auth");
 app.use("/api/auth", authRoutes);
+app.use("/api/post", postRoutes);
 
 // CHANGE 3: Removed this line (it was unused)
 // const user = require("./models/User");

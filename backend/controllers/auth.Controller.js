@@ -49,10 +49,7 @@ const login = async (req, res) => {
       //compare the hashed password using bcrypt and usejson webtokens to generate cookies
       return res.status(401).json({ message: "Invalid credential" });
     } else {
-      const isPasswordcorrect = await bcrypt.compare(
-        pass,
-        existingUser.pass
-      );
+      const isPasswordcorrect = await bcrypt.compare(pass, existingUser.pass);
 
       if (isPasswordcorrect) {
         //now we setup json web token
