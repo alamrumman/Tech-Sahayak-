@@ -67,8 +67,8 @@ const login = async (req, res) => {
           existingUser: {
             id: existingUser._id,
             name: existingUser.name,
+            email: existingUser.email,
             Role: existingUser.Role,
-            email,
           },
         });
       } else {
