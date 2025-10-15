@@ -43,4 +43,17 @@ const posting = async (req, res) => {
   }
 };
 
-module.exports = posting;
+const getAllPosts = async (req, res) => {
+  try {
+    const posts = await Post.find()
+      .populate("user", "name email") // populate user details
+      .sort({ createdAt: -1 }); // latest first
+
+    res.status(200).json(posts);
+  } catch (error) {
+    console.error("Error fetching posts:", error);
+    res.status(500).json({ message: "Failed to fetch posts" });
+  }
+};
+
+module.exports = { posting, getAllPosts };

@@ -27,6 +27,7 @@ app.use(
 app.use(express.json());
 
 // CHANGE 2: Import and use auth routes IMMEDIATELY after express.json()
+const postRoutes = require("./routes/post.routes");
 const authRoutes = require("./routes/auth");
 app.use("/api/auth", authRoutes);
 app.use("/api/post", postRoutes);
