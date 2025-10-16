@@ -8,7 +8,7 @@ function Message({ message, setMessage }) {
   const [isModelOpen, setIsModelOpen] = useState(false);
 
   return (
-    <div className="bg-zinc-100 w-80 md:w-130 resize-x flex-wrap h-30 z-10 rounded-3xl text-black p-4">
+    <div className="bg-zinc-100 w-full md:w-130 resize-x flex-wrap h-30 z-10 rounded-3xl text-black p-4">
       <div className="flex  justify-center">
         <div className="py-3">
           <Avatar>
