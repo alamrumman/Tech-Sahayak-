@@ -38,6 +38,10 @@ const timelineEventsData = [
     title: "Phase II",
     status: "current",
     description: [
+      {
+        text: "Forum page creation for posting regular updates by team",
+        isDone: true,
+      },
       { text: "AI model training and testing", isDone: false },
       {
         text: "Connecting model with the application and replacing hardcoded portion",
@@ -80,7 +84,6 @@ const timelineEventsData = [
       },
     ],
   },
-
 ];
 
 const TimelineItem = ({ date, title, description, isLast, status }) => (
