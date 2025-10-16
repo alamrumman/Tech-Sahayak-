@@ -98,7 +98,10 @@ function Forum() {
                     >
                       <p className="text-gray-800">{post.message}</p>
                       <p className="text-right text-xs text-gray-500 mt-2">
-                        - {post.user?.name || "Anonymous"}
+                        {post.user?.name}
+                      </p>
+                      <p className="text-right text-xs text-gray-500 mt-2">
+                        {post.Role}
                       </p>
                     </div>
                   ))
