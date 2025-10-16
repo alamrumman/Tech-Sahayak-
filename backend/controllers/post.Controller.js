@@ -6,7 +6,9 @@ const posting = async (req, res) => {
     const { email, message } = req.body;
 
     if (!email || !message) {
-      return res.status(400).json({ message: "Email and message are required." });
+      return res
+        .status(400)
+        .json({ message: "Email and message are required." });
     }
 
     const existingUser = await User.findOne({ email });
@@ -19,6 +21,7 @@ const posting = async (req, res) => {
     const newPost = new Post({
       message,
       user: existingUser._id,
+      Role: existingUser.Role,
     });
 
     const savedPost = await newPost.save();
@@ -46,4 +49,3 @@ const getAllPosts = async (req, res) => {
 };
 
 module.exports = { posting, getAllPosts };
-
