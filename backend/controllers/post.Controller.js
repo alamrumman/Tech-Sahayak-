@@ -17,11 +17,19 @@ const posting = async (req, res) => {
         .status(401)
         .json({ message: "Please login or create an account to make a post." });
     }
+    // include Timestamp here using date.now or time . now , i want it in the format dd-mm-yy , time in am, pm
+    const now = new Date();
+    const options = { hour: "2-digit", minute: "2-digit", hour12: true };
+    const date = now.toLocaleDateString("en-GB"); // gives DD/MM/YYYY
+    const time = now.toLocaleTimeString("en-US", options); // gives hh:mm AM/PM
+    const formattedDate = date.replaceAll("/", "-"); // convert to DD-MM-YYYY
+    const timeStamp = `${formattedDate}, ${time}`;
 
     const newPost = new Post({
       message,
       user: existingUser._id,
       Role: existingUser.Role,
+      timeStamp,
     });
 
     const savedPost = await newPost.save();
