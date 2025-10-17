@@ -84,8 +84,8 @@ function Forum() {
           Live Updates by Team Members
         </h1>
 
-        <div className="bg-gray-50 rounded-2xl border border-gray-200 p-5 shadow-sm h-100">
-          <div className="space-y-4 max-h-50 overflow-y-auto">
+        <div className="bg-gray-50 rounded-2xl border border-gray-200 p-5 shadow-sm h-110">
+          <div className="space-y-4 max-h-55 overflow-y-auto">
             {posts.length > 0 ? (
               posts.map((post) => (
                 <div
