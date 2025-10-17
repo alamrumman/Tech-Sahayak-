@@ -19,8 +19,13 @@ const posting = async (req, res) => {
     }
     // include Timestamp here using date.now or time . now , i want it in the format dd-mm-yy , time in am, pm
     const now = new Date();
-    const options = { hour: "2-digit", minute: "2-digit", hour12: true };
-    const date = now.toLocaleDateString("en-GB"); // gives DD/MM/YYYY
+    const options = {
+      timeZone: "Asia/Kolkata",
+      hour: "2-digit",
+      minute: "2-digit",
+      hour12: true,
+    };
+    const date = now.toLocaleDateString("en-GB", { timeZone: "Asia/Kolkata" }); // gives DD/MM/YYYY
     const time = now.toLocaleTimeString("en-US", options); // gives hh:mm AM/PM
     const formattedDate = date.replaceAll("/", "-"); // convert to DD-MM-YYYY
     const timeStamp = `${formattedDate}, ${time}`;
@@ -30,6 +35,7 @@ const posting = async (req, res) => {
       user: existingUser._id,
       Role: existingUser.Role,
       timeStamp,
+      image: existingUser.image,
     });
 
     const savedPost = await newPost.save();
@@ -47,7 +53,7 @@ const posting = async (req, res) => {
 const getAllPosts = async (req, res) => {
   try {
     const posts = await Post.find()
-      .populate("user", "name email")
+      .populate("user", "name email image")
       .sort({ createdAt: -1 });
     res.status(200).json(posts);
   } catch (err) {
