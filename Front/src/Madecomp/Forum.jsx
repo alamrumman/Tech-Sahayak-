@@ -104,7 +104,7 @@ function Forum() {
                         <div className="py-2">
                           <img
                             className="h-8 w-8 rounded-4xl"
-                            src="images\Rumman pp.jpg"
+                            src={post.user?.image}
                             alt=""
                           />
                         </div>
