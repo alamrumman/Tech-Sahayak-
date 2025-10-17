@@ -22,6 +22,10 @@ const userSchema = new mongoose.Schema({
     enum: ["Team lead", "ML expert", "Data analyst", "Web developer"],
     default: "Data analyst",
   },
+  image: {
+    type: String,
+    default: "",
+  },
 });
 
 //middleware for hashing the password before the user is created.
