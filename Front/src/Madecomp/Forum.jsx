@@ -25,6 +25,7 @@ function Forum() {
       );
       if (!response.ok) throw new Error("Could not fetch posts.");
       const data = await response.json();
+      console.log(data);
       setPosts(data);
     } catch (error) {
       setFeedback(error.message);
@@ -53,6 +54,7 @@ function Forum() {
       message,
       email: user.email,
     };
+    console.log(postData);
 
     try {
       const response = await fetch(
@@ -83,7 +85,7 @@ function Forum() {
         </h1>
 
         <div className="bg-gray-50 rounded-2xl border border-gray-200 p-5 shadow-sm h-100">
-          <div className="space-y-4 max-h-96 overflow-y-auto">
+          <div className="space-y-4 max-h-50 overflow-y-auto">
             {posts.length > 0 ? (
               posts.map((post) => (
                 <div
@@ -97,13 +99,32 @@ function Forum() {
 
                   {/* name, role, time */}
                   <div className="flex justify-between items-center text-sm text-gray-500">
-                    <div className="flex flex-col">
-                      <span className="font-medium text-gray-800">
-                        {post.user?.name || "Unknown User"}
+                    <div className="">
+                      <div className="flex">
+                        <div className="py-2">
+                          <img
+                            className="h-8 w-8 rounded-4xl"
+                            src="images\Rumman pp.jpg"
+                            alt=""
+                          />
+                        </div>
+
+                        <div className="flex-col p-1">
+                          <span className="font-medium text-gray-800">
+                            {post.user?.name || "Unknown User"}
+                          </span>
+                          <div>
+                            <span className="text-xs text-gray-500">
+                              {post.Role}
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+
+                      <span className="text-xs text-gray-400">
+                        {post.timeStamp}
                       </span>
-                      <span className="text-xs text-gray-500">{post.Role}</span>
                     </div>
-                    <span className="text-xs text-gray-400">{post.timeStamp}</span>
                   </div>
                 </div>
               ))
