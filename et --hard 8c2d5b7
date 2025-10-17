@@ -1,0 +1,54 @@
+[33m7e5886e[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m  corrections
+[33m97add42[m fix1
+[33m3c520b0[m cloudinary check
+[33m5b3bc3c[m  corrections cloudinary support
+[33mfe2a3ca[m compatible code
+[33m9956f5f[m Attained full functionality
+[33m17e94f9[m User profile image and role based signup is now ready
+[33ma5eb3a4[m Improved messages UI
+[33m304707e[m Added timestamps for everynew post
+[33m0be5040[m Post section now fully functional
+[33m6e8dc8b[m Added role to post
+[33m60155c6[m Updated timeline ,reached a milestone
+[33md771a51[m Check code
+[33md70a269[m Email sending
+[33mfcc5b27[m Added email
+[33m941a10d[m new check
+[33m7a17f05[m check
+[33mccc7d78[m added get route
+[33mcc5dbf3[m Backend for posts now ready
+[33m043a320[m Logo placed
+[33mcc47204[m Stabilised mobile interface
+[33m80af903[m Login signup works perfectly now
+[33mfd70ba2[m Sorted user schema according to frontend input for communication
+[33m4d82828[m Made more corrections
+[33me9d235a[m correcting routes
+[33md923156[m tested backend and runs good
+[33m42e68c2[m Structured backend for login and signup of team mates
+[33m430b87f[m added signup page
+[33m1b944f3[m Overlay for login
+[33m5dda116[m added initial segment of forum
+[33m7d5f6f3[m Corrected the timeline
+[33m4f9d790[m made changes
+[33mfc60583[m added
+[33mf64c9bc[m sorted problems for final check
+[33mda6da70[m Fixed the route
+[33mac25dbf[m backend testing
+[33m2e2ec37[m Backend connected
+[33m6e76e57[m Youtube link added
+[33me56a783[m the timeline is now fully functional
+[33m6b69247[m Hardcoded segment
+[33mb8bb723[m Improved the navbar ,acheived the native language in the hero section , Mobile view upgrade , before hardcardode
+[33m260f938[m phone mockup set now
+[33mab89d0f[m design finally sorted
+[33mcadb7f5[m resized comp
+[33me89a958[m fixing design bugs
+[33m317356a[m Frontend deploy ready
+[33m1db2d36[m fix1
+[33m98b72c0[m Backend ready to deploy
+[33m4eff2f6[m Starting to  branch from here and improved the navbar
+[33m57b2b69[m Toggle and design elements improved, added routing
+[33m0a3c2e6[m OCR works now
+[33m2f29bc4[m before adding OCR
+[33mc6d8fec[m Improved UI
+[33m02f9a7f[m Initial commit - full stack project
