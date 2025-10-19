@@ -34,7 +34,7 @@ const timelineEventsData = [
     ],
   },
   {
-    date: "October 18, 2025",
+    date: "October 23, 2025",
     title: "Phase II",
     status: "current",
     description: [
@@ -54,7 +54,7 @@ const timelineEventsData = [
     ],
   },
   {
-    date: "November 1, 2025",
+    date: "November 2, 2025",
     title: "Phase III",
     status: "upcoming",
     description: [
@@ -90,8 +90,9 @@ const TimelineItem = ({ date, title, description, isLast, status }) => (
   <div className="relative space-y-2">
     {/* Vertical line for mobile */}
     {!isLast && (
-      <div className="bg-gray-300 shrink-0 absolute top-6 left-0 w-px h-full block md:hidden"></div>
-    )}
+        <div className="bg-gray-300 shrink-0 absolute top-5 left-0 w-px h-full block md:hidden">
+        </div>
+      )}
     {/* --- UPDATED DOT LOGIC --- */}
     <div className="absolute top-0 -left-[9px] z-10 flex size-5 items-center justify-center rounded-full p-1 md:-top-10 md:left-0">
       {/* 2. Conditionally render the dot's style */}
@@ -158,7 +159,7 @@ const Timeline = ({ events = timelineEventsData }) => {
                   className="absolute -top-[32px] left-0 hidden h-1 bg-black md:block"
                   style={{ width: "26%" }}
                 ></div>
-                <div className="grid gap-12 md:gap-6 md:grid-cols-4">
+                <div className="grid gap-8 md:gap-6 md:grid-cols-4">
                   {events.map((event, index) => (
                     <TimelineItem
                       key={index}

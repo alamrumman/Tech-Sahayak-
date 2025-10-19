@@ -17,6 +17,7 @@ function Message({ message, setMessage }) {
         </div>
         <textarea
           className="text-black w-full border-none outline-none p-3"
+          value={message}
           onChange={(e) => setMessage(e.target.value)}
           name=""
           id=""

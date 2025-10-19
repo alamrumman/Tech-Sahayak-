@@ -69,11 +69,9 @@ function Forum() {
 
       const data = await response.json();
       if (!response.ok) throw new Error(data.message || "Failed to post");
-
+      setMessage("");
       alert("Posted successfully!");
       setIsLoading(false);
-      setMessage("");
-      setPosts("");
       fetchPosts(); // refresh posts after posting
     } catch (error) {
       console.error("An error occurred while posting:", error);
@@ -87,8 +85,8 @@ function Forum() {
           Live Forum
         </h1>
 
-        <div className="bg-gray-50 rounded-2xl border border-gray-200 p-5 shadow-sm h-110">
-          <div className="space-y-4 max-h-55 overflow-y-auto">
+        <div className="bg-gray-50 rounded-2xl border border-gray-200 p-5 shadow-sm h-full">
+          <div className="space-y-4 max-h-83 overflow-y-auto">
             {posts.length > 0 ? (
               posts.map((post) => (
                 <div
