@@ -7,8 +7,8 @@ function Cardcomp() {
   const { t } = useTranslation();
 
   return (
-    <div class="relative w-[400px] h-[200px] ">
-      <div class="inverted-radius w-full h-full bg-whitesmoke"></div>
+    <div className="relative w-[400px] h-[200px] ">
+      <div className="inverted-radius w-full h-full bg-whitesmoke"></div>
       <div className="W-40 absolute top-0 p-2 flex">
         <img
           className="h-42 w-42 rounded-2xl mt-1 "
@@ -32,8 +32,8 @@ function Cardcomp() {
           </a>
         </div>
       </div>
-      <div class="absolute top-[0.1px]  hover:scale-120 transition duration-350 right-[8px]">
-        <button class="rounded-4xl bg-green-400 hover:bg-green-500 w-13 h-13 flex items-center justify-center cursor-pointer">
+      <div className="absolute top-[0.1px]  hover:scale-120 transition duration-350 right-[8px]">
+        <button className="rounded-4xl bg-green-400 hover:bg-green-500 w-13 h-13 flex items-center justify-center cursor-pointer">
           <ImArrowUpRight2 className="transform " />
         </button>
       </div>

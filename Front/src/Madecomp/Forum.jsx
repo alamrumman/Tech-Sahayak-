@@ -7,6 +7,7 @@ import { Button } from "../components/ui/button";
 function Forum() {
   const { user, token } = useAuth();
   const [isModelOpen, setIsModelOpen] = useState(false);
+  const [isloading, setIsLoading] = useState(false);
   const [message, setMessage] = useState("");
   const [posts, setPosts] = useState([]);
   const [feedback, setFeedback] = useState("");
@@ -55,7 +56,7 @@ function Forum() {
       email: user.email,
     };
     console.log(postData);
-
+    setIsLoading(true);
     try {
       const response = await fetch(
         "https://agroai-backend-jkws.onrender.com/api/post/posts",
@@ -70,7 +71,9 @@ function Forum() {
       if (!response.ok) throw new Error(data.message || "Failed to post");
 
       alert("Posted successfully!");
+      setIsLoading(false);
       setMessage("");
+      setPosts("");
       fetchPosts(); // refresh posts after posting
     } catch (error) {
       console.error("An error occurred while posting:", error);
@@ -81,7 +84,7 @@ function Forum() {
     <section className="bg-white py-12 px-4">
       <div className="container mx-auto">
         <h1 className="mb-8 text-center text-3xl font-bold tracking-tight text-gray-900 sm:text-5xl">
-          Live Updates by Team Members
+          Live Forum
         </h1>
 
         <div className="bg-gray-50 rounded-2xl border border-gray-200 p-5 shadow-sm h-110">
@@ -138,13 +141,13 @@ function Forum() {
           <div className="py-5 items-center gap-3">
             <Message message={message} setMessage={setMessage} />
             <Button
-              className="w-24 bg-black hover:bg-zinc-800 text-white"
+              className="w-20 ml-2 bg-black hover:bg-zinc-800 text-white"
               onClick={() => {
                 if (!user || !token) setIsModelOpen(true);
                 else handleposting();
               }}
             >
-              Post
+              {isloading ? "Posting.." : "Post"}
             </Button>
           </div>
         </div>
