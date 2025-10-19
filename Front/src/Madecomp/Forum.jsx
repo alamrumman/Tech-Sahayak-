@@ -79,7 +79,7 @@ function Forum() {
   };
 
   return (
-    <section className="bg-white py-12 px-4">
+    <section className="bg-white py-5 px-4">
       <div className="container mx-auto">
         <h1 className="mb-8 text-center text-3xl font-bold tracking-tight text-gray-900 sm:text-5xl">
           Live Forum

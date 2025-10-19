@@ -145,7 +145,7 @@ const TimelineItem = ({ date, title, description, isLast, status }) => (
 const Timeline = ({ events = timelineEventsData }) => {
   const { t } = useTranslation();
   return (
-    <section className="bg-white py-32">
+    <section className="bg-white py-15">
       <div className="flex items-center justify-center">
         <div className="container">
           <h1 className="mb-10 text-center text-3xl font-bold tracking-tighter text-black sm:text-6xl">
